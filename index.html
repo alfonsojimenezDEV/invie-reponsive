@@ -32,8 +32,11 @@
     </section>
     <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
         <h2>Nuestras guitarras</h2><!-- titulo  -->
+        <div class="video-responsive-contenedor"> 
+            <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/TSVrhsiEUQc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
         <article class="guitarra"> <!-- guitarra1 -->
-            <img class="derecha" src="images/invie-acustica.png" alt="Guitarra Indie Acústica" width="350"/>
+            <img class="derecha" data-src="images/invie-acustica.png" alt="Guitarra Indie Acústica" width="350"/>
             <div class="contenedor-guitarra-a">
                 <h3 class="title-b">Invie Acústica</h3>
                 <ol>
@@ -44,7 +47,7 @@
             </div>
         </article>
         <article class="guitarra b"> <!-- guitarra2 -->
-            <img class="izquierda" src="images/invie-classic.png" alt="Guitarra Indie Clásica" width="350"/>
+            <img class="izquierda" data-src="images/invie-classic.png" alt="Guitarra Indie Clásica" width="350"/>
             <div class="contenedor-guitarra-b">
                 <h3 class="title-b">Invie Classic</h3>
                 <ol>
@@ -58,7 +61,7 @@
     <footer class="footer">
         <div class="contenedor">
             <div class="contacto">
-                <img src="images/invie-white.png" alt="Logotipo blanco">
+                <img data-src="images/invie-white.png" alt="Logotipo blanco">
                 <a href="tel:+34957111111"><strong>Teléfono</strong><span>+34957111111</span></a>
                 <a href="mailto:contacto@invie.com"><strong>E-mail</strong><span>contacto@invie.com</span></a>
             </div>
@@ -97,6 +100,7 @@
             </form>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
     <script>
         var consulta = window.matchMedia('(max-width: 500px)');
         consulta.addListener(mediaQuery);
@@ -118,6 +122,12 @@
         function toggleMenu() {
             $menu.classList.toggle('active');
         }
+
+        //lazy Loading
+        var bLazy = new Blazy({
+            selector: 'img'
+        });
+
     </script>
 </body>
 </html>
