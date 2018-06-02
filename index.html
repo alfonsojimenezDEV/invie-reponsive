@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Invie - tus mejores guitarras!!</title>
     <link href="https://fonts.googleapis.com/css?family=Allerta|Montserrat" rel="stylesheet">  
-    <link rel="stylesheet" href="css/invie.css">
+    <link rel="stylesheet" href="css/invie.css?v1.1">
     
 </head>
 <body>
@@ -27,13 +27,17 @@
             <div class="contenedor">
                 <h1 class="titulo">Guitarras <span>invie</span>sibles</h1> <!-- titulo -->
                 <h3 class="title-a">Sé la estrella de rock que siempre quisiste ser</h3> <!-- resumen -->
-                <a class="button" href="#guitarras">Conoce más</a> <!-- boton -->
+                <a class="button" id="idConoceMas" href="#guitarras">Conoce más</a> <!-- boton -->
             </div>
     </section>
     <section id="guitarras" class="guitarras contenedor"> <!-- guitarras -->
         <h2>Nuestras guitarras</h2><!-- titulo  -->
-        <div class="video-responsive-contenedor"> 
-            <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/TSVrhsiEUQc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="video-demo-contenedor">
+            <div class="video-demo">
+                <div class="video-responsive-contenedor"> 
+                    <iframe class="video-responsive-src" width="560" height="315" src="https://www.youtube.com/embed/TSVrhsiEUQc?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
         <article class="guitarra"> <!-- guitarra1 -->
             <img class="derecha" data-src="images/invie-acustica.png|images/invie-acustica.png" alt="Guitarra Indie Acústica" width="350"/>
@@ -101,6 +105,7 @@
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
         var consulta = window.matchMedia('(max-width: 500px)');
         consulta.addListener(mediaQuery);
@@ -123,11 +128,32 @@
             $menu.classList.toggle('active');
         }
 
+        // Funciones para los gestos de swipe
+        function showMenu() {
+            $menu.classList.add('active');
+        }
+
+        function hideMenu() {
+            $menu.classList.remove('active');
+        }
+
         //lazy Loading
         var bLazy = new Blazy({
             selector: 'img'
         });
-
+        
+        // Gestos touch
+        var $body = document.body;
+        var gestos = new Hammer($body);
+        gestos.on('swipeleft', hideMenu);
+        gestos.on('swiperight', showMenu);
+        
+        var $btnConoceMas = document.getElementById('idConoceMas');
+        var $gestosConoceMas = new Hammer($btnConoceMas, {time: 2000});
+        $gestosConoceMas.get('press').set({time: 500});
+        $gestosConoceMas.on('press', function(e){
+            console.log('Han pasado los x milisegundos');
+        }); 
     </script>
 </body>
 </html>
