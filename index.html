@@ -116,11 +116,11 @@
             if (consulta.matches) {
                 console.log ("Están dentro de los 800");
                 $burguerButton.style="visibility: visible";
-                $burguerButton.addEventListener('touchstart', toggleMenu);
+                $burguerButton.addEventListener('click', toggleMenu);
             }else {
                 console.log ("Está fuera");
                 $burguerButton.style="visibility: hidden";
-                $burguerButton.removeEventListener('touchstart',toggleMenu);
+                $burguerButton.removeEventListener('click',toggleMenu);
             }
         }
         mediaQuery();
