@@ -50,6 +50,9 @@ body {
     margin: 0;
 }
 
+.opened {
+    overflow: hidden;
+}
 
 input, textarea {
     outline: 0;

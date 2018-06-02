@@ -126,6 +126,8 @@
         mediaQuery();
         function toggleMenu() {
             $menu.classList.toggle('active');
+            document.body.classList.add('openend');
+            $burguerButton.classList.toggle('icon-close');
         }
 
         // Funciones para los gestos de swipe
